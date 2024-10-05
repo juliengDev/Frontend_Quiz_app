@@ -41,7 +41,7 @@ const Main = styled.main`
   }
 `;
 
-export const ThemeProvider = ({ children, isDark, setIsDark }) => {
+const ThemeProvider = ({ children, isDark, setIsDark }) => {
   const [systemPreference, setSystemPreference] = useState(false);
 
   useEffect(() => {
@@ -68,3 +68,5 @@ export const ThemeProvider = ({ children, isDark, setIsDark }) => {
     </Main>
   );
 };
+
+export default ThemeProvider;
