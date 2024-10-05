@@ -1,46 +1,16 @@
 import "./App.css";
-import { createGlobalStyle } from "styled-components";
 import { useReducer } from "react";
 import Header from "./Components/Common/Header";
-import { ThemeToggle } from "./Components/Common/ThemeToggle";
+import { ThemeProvider } from "./Components/Common/ThemeProvider";
 import useLocalStorage from "use-local-storage";
-import RubikItalic from "./assets/fonts/Rubik-Italic-VariableFont_wght.ttf";
-import Rubik from "./assets/fonts/Rubik-VariableFont_wght.ttf";
 
-/** 
-
-	100 : Thin
-	•	200 : Extra Light (Ultra Light)
-	•	300 : Light
-	•	400 : Normal
-	•	500 : Medium
-	•	600 : Semi Bold (Demi Bold)
-	•	700 : Bold
-	•	800 : Extra Bold (Ultra Bold)
-	•	900 : Black (Heavy)
-  
-  */
-
-const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: "Rubik", sans-serif;
-    src: url(${Rubik}) format('truetype');
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-      font-family: "Rubik", sans-serif;
-  src: url(${RubikItalic}) format('truetype');
-  font-weight: 400;
-  font-style: italic;
-}
-  body {
-    font-family: "Rubik", sans-serif;
-  }
-`;
+import GlobalStyle from "./Styles/GlobalStyles";
 
 const initialState = {
+  questions: [],
   theme: "Accessibility",
+  // "loading","error","ready","active","finished",
+  status: "loading",
 };
 
 function reducer(state, action) {
@@ -64,14 +34,14 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ThemeToggle isDark={isDark} setIsDark={setIsDark}>
+      <ThemeProvider isDark={isDark} setIsDark={setIsDark}>
         <Header
           theme={theme}
           handleSetTheme={handleSetTheme}
           toggleTheme={toggleTheme}
           isDark={isDark}
         />
-      </ThemeToggle>
+      </ThemeProvider>
     </>
   );
 }

@@ -16,7 +16,7 @@ const Head = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.6rem 2.4rem 0;
+  padding: 2.7rem 0rem;
 `;
 const IconGroup = styled.div`
   display: flex;
@@ -24,9 +24,27 @@ const IconGroup = styled.div`
   gap: 1.6rem;
 `;
 const IconContainer = styled.div`
-  padding: 1rem 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${(props) => props.$backgroundColor || "transparent"};
   border-radius: 8px;
+  width: 5.6rem;
+  height: 5.6rem;
+  img {
+    height: 40px;
+    width: 40px;
+  }
+  @media (max-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    img {
+      height: 28.57px;
+      width: 28.57px;
+    }
+  }
+  @media (max-width: 375px) {
+  }
 `;
 const IconTitle = styled.h2`
   font-size: 1.8rem;
@@ -63,12 +81,30 @@ const Handle = styled(motion.div)`
 `;
 
 const Header = ({ theme, toggleTheme, isDark }) => {
+  let bgColor = "";
+  switch (theme) {
+    case "Accessibility":
+      bgColor = "var(--color-Light-Purple)";
+      break;
+    case "HTML":
+      "var(--color-red)";
+      break;
+    case "CSS":
+      "var(--color-neonGreen)";
+      break;
+    case "Javascript":
+      "var(--color-yellow)";
+      break;
+    default:
+      bgColor = "transparent";
+      break;
+  }
   return (
     <Head>
       {theme === "Accessibility" && (
         <IconGroup>
-          <IconContainer $backgroundColor="var(--color-Light-Purple)">
-            <Icon name="icon-accessibility" width="40" height="40" />
+          <IconContainer $backgroundColor={bgColor}>
+            <Icon name="icon-accessibility" />
           </IconContainer>
           <IconTitle>{theme}</IconTitle>
         </IconGroup>

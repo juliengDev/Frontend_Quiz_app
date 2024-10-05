@@ -1,0 +1,70 @@
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+
+const getBackgroundImage = (theme, device) => {
+  if (theme === "dark") {
+    switch (device) {
+      case "mobile":
+        return "/images/pattern-background-mobile-dark.svg";
+      case "tablet":
+        return "/images/pattern-background-tablet-dark.svg";
+      case "desktop":
+      default:
+        return "/images/pattern-background-desktop-dark.svg";
+    }
+  } else {
+    switch (device) {
+      case "mobile":
+        return "/images/pattern-background-mobile-light.svg";
+      case "tablet":
+        return "/images/pattern-background-tablet-light.svg";
+      case "desktop":
+      default:
+        return "/images/pattern-background-desktop-light.svg";
+    }
+  }
+};
+
+const Main = styled.main`
+  background-image: ${({ $isDark }) =>
+    `url(${getBackgroundImage($isDark ? "dark" : "light", "desktop")})`};
+  background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    background-image: ${({ $isDark }) =>
+      `url(${getBackgroundImage($isDark ? "dark" : "light", "tablet")})`};
+  }
+
+  @media (max-width: 480px) {
+    background-image: ${({ $isDark }) =>
+      `url(${getBackgroundImage($isDark ? "dark" : "light", "mobile")})`};
+  }
+`;
+
+export const ThemeProvider = ({ children, isDark, setIsDark }) => {
+  const [systemPreference, setSystemPreference] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    setSystemPreference(mediaQuery.matches);
+
+    const handler = (e) => setSystemPreference(e.matches);
+    mediaQuery.addEventListener("change", handler);
+
+    return () => mediaQuery.removeEventListener("change", handler);
+  }, []);
+
+  useEffect(() => {
+    setIsDark(systemPreference);
+  }, [systemPreference, setIsDark]);
+
+  return (
+    <Main
+      className="container"
+      $isDark={isDark}
+      data-theme={isDark ? "dark" : "light"}
+    >
+      {children}
+    </Main>
+  );
+};
