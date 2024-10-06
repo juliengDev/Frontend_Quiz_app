@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 import RubikItalic from "/src/assets/fonts/Rubik-Italic-VariableFont_wght.ttf";
 import Rubik from "/src/assets/fonts/Rubik-VariableFont_wght.ttf";
@@ -39,3 +39,11 @@ export default GlobalStyle;
 	•	900 : Black (Heavy)
   
   */
+
+export const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9.9rem 14rem;
+  gap: 14.3rem;
+`;

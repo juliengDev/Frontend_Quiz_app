@@ -1,33 +1,23 @@
 import "./App.css";
 import GlobalStyle from "./Styles/GlobalStyles";
 import ThemeProvider from "./Components/Common/ThemeProvider";
-import { QuizzProvider, useQuizz } from "./Context/QuizzContext";
+import { useQuizz } from "./Context/QuizzContext";
 import Header from "./Components/Common/Header";
 import useLocalStorage from "use-local-storage";
 import Welcome from "./Components/Home/Welcome";
 import ThemeSelector from "./Components/Home/ThemeSelector";
-import styled from "styled-components";
 import Loader from "./Components/Common/Loader";
 import Error from "./Components/Common/Error";
 import QuestionDisplay from "./Components/Quiz/QuestionDisplay";
 import ProgressBar from "./Components/Quiz/ProgressBar";
 import AnswerList from "./Components/Quiz/AnswerList";
-import SubmitButton from "./Components/Quiz/SubmitButton";
-
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9.9rem 14rem;
-  gap: 14.3rem;
-`;
+import ScoreDisplay from "./Components/Results/ScoreDisplay";
+import PlayAgainButton from "./Components/Results/PlayAgainButton";
+import { Container } from "./Styles/GlobalStyles";
 
 function App() {
   const [isDark, setIsDark] = useLocalStorage("isDark", false);
   const { status, theme, handleSetTheme } = useQuizz();
-  const toggleTheme = () => {
-    setIsDark((prev) => !prev);
-  };
 
   return (
     <>
@@ -36,29 +26,38 @@ function App() {
         <Header
           theme={theme}
           handleSetTheme={handleSetTheme}
-          toggleTheme={toggleTheme}
+          setIsDark={setIsDark}
           isDark={isDark}
         />
-        {status === "loading" && <Loader />}
-        {status === "error" && <Error />}
-        {status === "ready" && (
-          <Container>
-            <Welcome />
-            <ThemeSelector />
-          </Container>
-        )}
-        {status === "active" && (
-          <Container>
-            <div className="questions">
-              <QuestionDisplay />
-              <ProgressBar />
+        <Container>
+          {status === "loading" && <Loader />}
+          {status === "error" && <Error />}
+          {status === "ready" && (
+            <>
+              <Welcome />
+              <ThemeSelector />
+            </>
+          )}
+          {(status === "selected" ||
+            status === "active" ||
+            status === "answered") && (
+            <>
+              <div className="questions">
+                <QuestionDisplay />
+                <ProgressBar />
+              </div>
+              <div className="answers">
+                <AnswerList />
+              </div>
+            </>
+          )}
+          {status === "finished" && (
+            <div className="score">
+              <ScoreDisplay />
+              <PlayAgainButton />
             </div>
-            <div className="awnsers">
-              <AnswerList />
-              <SubmitButton />
-            </div>
-          </Container>
-        )}
+          )}
+        </Container>
       </ThemeProvider>
     </>
   );

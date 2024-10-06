@@ -1,23 +1,56 @@
 import { useContext, useEffect } from "react";
 import { createContext, useReducer } from "react";
 
-// useReduder
 const initialState = {
-  quizz: null,
-  title: "",
-  questions: null,
-  theme: "Accessibility",
-  // "loading","error","ready","active","finished",
+  quizzes: null,
+  currentQuizz: null,
+  theme: "",
   status: "loading",
+  index: 0,
+  answer: null,
 };
 function reducer(state, action) {
   switch (action.type) {
-    case "setTheme":
-      return { ...state, theme: action.payload };
     case "dataReceived":
-      return { ...state, quizz: action.payload, status: "ready" };
+      return { ...state, quizzes: action.payload, status: "ready" };
     case "dataFailed":
       return { ...state, status: "error" };
+    case "setTheme": {
+      const selectedQuizz = state.quizzes.find(
+        (q) => q.title === action.payload
+      );
+      return {
+        ...state,
+        theme: action.payload,
+        currentQuizz: selectedQuizz,
+        status: "selected",
+        index: 0,
+        answer: null,
+      };
+    }
+    case "newAnswer": {
+      const isCorrect =
+        state.currentQuizz.questions[state.index].answer === action.payload;
+      return {
+        ...state,
+        answer: action.payload,
+        status: isCorrect ? "correct" : "wrong",
+      };
+    }
+    case "submitAnswer":
+      return {
+        ...state,
+        status: "answered",
+        selectedAnswer: action.payload,
+      };
+
+    case "nextQuestion":
+      return {
+        ...state,
+        index: state.index + 1,
+        answer: null,
+        status: "active",
+      };
     default:
       throw new Error("Action unknown");
   }
@@ -27,14 +60,14 @@ function reducer(state, action) {
 const QuizzContext = createContext();
 
 function QuizzProvider({ children }) {
-  const [{ quizz, title, questions, theme, status }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [
+    { quizzes, title, questions, theme, status, index, answer, currentQuizz },
+    dispatch,
+  ] = useReducer(reducer, initialState);
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("../data/data.json");
+        const res = await fetch("/src/assets/data/data.json");
         const bdd = await res.json();
         const { quizzes: data } = bdd;
         dispatch({ type: "dataReceived", payload: data });
@@ -47,20 +80,18 @@ function QuizzProvider({ children }) {
     fetchData();
   }, []);
 
-  function handleSetTheme() {
-    dispatch({ type: "setTheme", action: "Accessibility" });
-  }
-
   return (
     <QuizzContext.Provider
       value={{
-        quizz,
+        quizzes,
         title,
         questions,
         theme,
         dispatch,
         status,
-        handleSetTheme,
+        index,
+        answer,
+        currentQuizz,
       }}
     >
       {children}

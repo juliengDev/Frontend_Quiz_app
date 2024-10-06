@@ -80,7 +80,7 @@ const Handle = styled(motion.div)`
   border-radius: 2em;
 `;
 
-const Header = ({ theme, toggleTheme, isDark }) => {
+const Header = ({ setIsDark, theme, isDark }) => {
   let bgColor = "";
   switch (theme) {
     case "Accessibility":
@@ -109,15 +109,18 @@ const Header = ({ theme, toggleTheme, isDark }) => {
           <IconTitle>{theme}</IconTitle>
         </IconGroup>
       )}
-      <Toggle isOn={isDark} toggleSwitch={toggleTheme} />
+      <Toggle isOn={isDark} setIsDark={setIsDark} />
     </Head>
   );
 };
-const Toggle = ({ isOn, toggleSwitch }) => {
+const Toggle = ({ isOn, setIsDark }) => {
+  const toggleTheme = () => {
+    setIsDark((prev) => !prev);
+  };
   return (
     <ToggleContainer>
       {isOn ? sunLight : sunDark}
-      <Switch data-ison={isOn} onClick={toggleSwitch}>
+      <Switch data-ison={isOn} onClick={toggleTheme}>
         <Handle layout transition={spring} />
       </Switch>
       {isOn ? moonLight : moonDark}
