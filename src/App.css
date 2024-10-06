@@ -1,91 +1,3 @@
-:root {
-  // Root colors
-  --color-grey: #817d92;
-  --color-darkGrey: #24232c;
-  --color-veryDarkGrey: #18171f;
-  --color-pure-white: #ffffff;
-
-  // App Colors
-  --color-Navy: #3b4d66;
-  --color-Dark-Navy: #313e51;
-  --color-Purple: #a729f5;
-  --color-Light-Purple: #f6e7ff;
-  --color-Orange: #ff7e35;
-  --color-Light-Orange: #fff1e9;
-  --color-Green: #2fd887;
-  --color-Light-Green: #e0fdef;
-  --color-Blue: #306aff;
-  --color-Light-Blue: #ebf0ff;
-
-  // Dark-Light Theme
-  --background-color: #f6f6f6;
-  --foreground-color: #003cff;
-  --primary-text-color: #0a0a0a;
-  --secondary-text-color: #fff;
-  --toggle-bg: #a729f5;
-  --toggle-fg: #fff;
-}
-[data-theme="dark"] {
-  --background-color: #313e51; /* Dark background */
-  --foreground-color: #567aff;
-  --primary-text-color: #f6f6f6;
-  --secondary-text-color: #0a0a0a;
-  /* --toggle-bg: #283452; */
-  /* --toggle-fg: #00a6ff; */
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
-  // This defines what 1rem is
-  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
-}
-a:link,
-a:visited,
-a:hover,
-a:active {
-  text-decoration: none;
-  color: inherit;
-  cursor: auto; /* or pointer if you want to keep the default hand cursor */
-}
-
-/*
-SPACING SYSTEM (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
-
-FONT SIZE SYSTEM (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
-*/
-body {
-  min-height: 100dvh;
-  background-color: var(--background-color);
-  color: var(--primary-text-color);
-}
-
-.container {
-  background-color: var(--background-color);
-  color: var(--primary-text-color);
-  /* max-width: 115.7rem; */
-  padding: 0 14.3rem;
-  margin: 0 auto;
-  width: 100%;
-  min-height: 100dvh;
-  transition: background-color 250ms ease-in-out;
-  @media (max-width: 768px) {
-    padding: 0 2.4rem;
-  }
-}
-
 // RESET CSS
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -219,5 +131,104 @@ table {
 }
 
 button {
-  display: block;
+  -webkit-appearance: none;
+  border-radius: 0;
+  text-align: inherit;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
+:root {
+  // Root colors
+  --color-grey: #817d92;
+  --color-darkGrey: #24232c;
+  --color-veryDarkGrey: #18171f;
+  --color-pure-white: #ffffff;
+
+  // App Colors
+  --color-Navy: #3b4d66;
+  --color-Dark-Navy: #313e51;
+  --color-Grey-Navy: #626c7f;
+  --color-Purple: #a729f5;
+  --color-Light-Purple: #f6e7ff;
+  --color-Orange: #ff7e35;
+  --color-Light-Orange: #fff1e9;
+  --color-Green: #2fd887;
+  --color-Light-Green: #e0fdef;
+  --color-Blue: #306aff;
+  --color-Light-Blue: #ebf0ff;
+
+  // Dark-Light Theme
+  --background-color: #f6f6f6;
+  --primary-text-color: #313e51;
+  --secondary-text-color: #fff;
+  --toggle-bg: #a729f5;
+  --toggle-fg: #fff;
+}
+[data-theme="dark"] {
+  --background-color: #313e51; /* Dark background */
+  --primary-text-color: #f6f6f6;
+  --secondary-text-color: #0a0a0a;
+}
+[data-theme="light"] {
+  --background-color: #f6f6f6; /* Dark background */
+  --primary-text-color: #313e51;
+  --secondary-text-color: #0a0a0a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+}
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  cursor: auto; /* or pointer if you want to keep the default hand cursor */
+}
+
+/*
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+*/
+.container {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  /* max-width: 115.7rem; */
+  padding: 0 14.3rem;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100dvh;
+  transition: background-color 250ms ease-in-out;
+  @media (max-width: 768px) {
+    padding: 0 2.4rem;
+  }
+}
+
+body.theme-enabled {
+  min-height: 100dvh;
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
 }

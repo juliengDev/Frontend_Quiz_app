@@ -5,6 +5,7 @@ const initialState = {
   quizzes: null,
   currentQuizz: null,
   theme: "",
+  themes: ["HTML", "CSS", "Javascript", "Accessibility"],
   status: "loading",
   index: 0,
   answer: null,
@@ -61,7 +62,17 @@ const QuizzContext = createContext();
 
 function QuizzProvider({ children }) {
   const [
-    { quizzes, title, questions, theme, status, index, answer, currentQuizz },
+    {
+      quizzes,
+      title,
+      questions,
+      theme,
+      status,
+      index,
+      answer,
+      currentQuizz,
+      themes,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
   useEffect(() => {
@@ -92,6 +103,7 @@ function QuizzProvider({ children }) {
         index,
         answer,
         currentQuizz,
+        themes,
       }}
     >
       {children}

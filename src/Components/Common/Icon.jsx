@@ -1,16 +1,53 @@
-// const Icon = ({ name, ...props }) => {
-//   return (
-//     <svg {...props}>
-//       <use href={`/src/assets/images/${name}.svg#icon`} />
-//     </svg>
-//   );
-// };
+import styled from "styled-components";
 
-// export default Icon;
+const IconContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.$backgroundColor || "transparent"};
+  border-radius: 8px;
+  width: 5.6rem;
+  height: 5.6rem;
+  img {
+    height: 40px;
+    width: 40px;
+  }
+  @media (max-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    img {
+      height: 28.57px;
+      width: 28.57px;
+    }
+  }
+  @media (max-width: 375px) {
+  }
+`;
+const Icon = ({ name, theme }) => {
+  const iconName = `icon-${theme.toLowerCase()}`;
 
-const Icon = ({ name, alt, ...props }) => {
+  let bgColor = "";
+  switch (theme) {
+    case "Accessibility":
+      bgColor = "var(--color-Light-Purple)";
+      break;
+    case "HTML":
+      bgColor = "var(--color-Light-Orange)";
+      break;
+    case "CSS":
+      bgColor = "var(--color-Light-Green)";
+      break;
+    case "Javascript":
+      bgColor = "var(--color-Light-Blue)";
+      break;
+    default:
+      bgColor = "transparent";
+      break;
+  }
   return (
-    <img src={`/src/assets/images/${name}.svg`} alt={alt || name} {...props} />
+    <IconContainer $backgroundColor={bgColor}>
+      <img src={`/src/assets/images/${iconName}.svg`} alt={name} />
+    </IconContainer>
   );
 };
 

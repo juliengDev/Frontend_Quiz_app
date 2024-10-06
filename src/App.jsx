@@ -30,7 +30,7 @@ function App() {
           {status === "ready" && (
             <>
               <Welcome />
-              <ThemeSelector />
+              <ThemeSelector isDark={isDark} />
             </>
           )}
           {(status === "selected" ||

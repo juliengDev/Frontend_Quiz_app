@@ -43,21 +43,31 @@ const Main = styled.main`
 `;
 
 const ThemeProvider = ({ children, isDark, setIsDark }) => {
-  const [systemPreference, setSystemPreference] = useState(false);
+  // const [systemPreference, setSystemPreference] = useState(false);
+
+  // useEffect(() => {
+  //   const mediaQuery = window.matchMedia("(prefers-color-scheme: ligth)");
+  //   setSystemPreference(mediaQuery.matches);
+
+  //   const handler = (e) => setSystemPreference(e.matches);
+  //   mediaQuery.addEventListener("change", handler);
+
+  //   return () => mediaQuery.removeEventListener("change", handler);
+  // }, []);
+
+  // useEffect(() => {
+  //   setIsDark(systemPreference);
+  // }, [systemPreference, setIsDark]);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    setSystemPreference(mediaQuery.matches);
+    const body = document.body;
+    body.setAttribute("data-theme", isDark ? "dark" : "light");
 
-    const handler = (e) => setSystemPreference(e.matches);
-    mediaQuery.addEventListener("change", handler);
-
-    return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
-
-  useEffect(() => {
-    setIsDark(systemPreference);
-  }, [systemPreference, setIsDark]);
+    // Clean-up function to reset the theme when the component unmounts
+    return () => {
+      body.removeAttribute("data-theme");
+    };
+  }, [isDark]);
 
   return (
     <Main

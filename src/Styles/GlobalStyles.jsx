@@ -21,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: "Rubik", sans-serif;
+
+    
   }
 `;
 
@@ -43,7 +45,6 @@ export default GlobalStyle;
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 9.9rem 14rem;
+  padding: 9.9rem 0;
   gap: 14.3rem;
 `;
