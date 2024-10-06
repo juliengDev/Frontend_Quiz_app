@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useQuizz } from "../../Context/QuizzContext";
 import { Container } from "../../Styles/GlobalStyles";
 import ThemeSelector from "../Home/ThemeSelector";

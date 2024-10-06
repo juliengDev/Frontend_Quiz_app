@@ -17,18 +17,13 @@ import { Container } from "./Styles/GlobalStyles";
 
 function App() {
   const [isDark, setIsDark] = useLocalStorage("isDark", false);
-  const { status, theme, handleSetTheme } = useQuizz();
+  const { status } = useQuizz();
 
   return (
     <>
       <GlobalStyle />
       <ThemeProvider isDark={isDark} setIsDark={setIsDark}>
-        <Header
-          theme={theme}
-          handleSetTheme={handleSetTheme}
-          setIsDark={setIsDark}
-          isDark={isDark}
-        />
+        <Header setIsDark={setIsDark} isDark={isDark} />
         <Container>
           {status === "loading" && <Loader />}
           {status === "error" && <Error />}

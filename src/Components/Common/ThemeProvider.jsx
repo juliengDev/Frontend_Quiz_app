@@ -29,6 +29,7 @@ const Main = styled.main`
   background-image: ${({ $isDark }) =>
     `url(${getBackgroundImage($isDark ? "dark" : "light", "desktop")})`};
   background-repeat: no-repeat;
+  /* background-position: center; */
 
   @media (max-width: 768px) {
     background-image: ${({ $isDark }) =>

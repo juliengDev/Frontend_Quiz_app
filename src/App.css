@@ -1,19 +1,21 @@
 :root {
-  --color-red: #f64a4a;
-  --color-orange: #fb7c58;
-  --color-yellow: #f8cd65;
-  --color-neonGreen: #a4ffaf;
-  --color-almostWhite: #e6e5ea;
+  // Root colors
   --color-grey: #817d92;
   --color-darkGrey: #24232c;
   --color-veryDarkGrey: #18171f;
   --color-pure-white: #ffffff;
 
-  // Colors App
+  // App Colors
   --color-Navy: #3b4d66;
   --color-Dark-Navy: #313e51;
   --color-Purple: #a729f5;
   --color-Light-Purple: #f6e7ff;
+  --color-Orange: #ff7e35;
+  --color-Light-Orange: #fff1e9;
+  --color-Green: #2fd887;
+  --color-Light-Green: #e0fdef;
+  --color-Blue: #306aff;
+  --color-Light-Blue: #ebf0ff;
 
   // Dark-Light Theme
   --background-color: #f6f6f6;
@@ -31,9 +33,6 @@
   /* --toggle-bg: #283452; */
   /* --toggle-fg: #00a6ff; */
 }
-// #password-display {
-//   color: rgba(240, 240, 240, 0.25); /* Default color with 25% opacity */
-// }
 
 * {
   margin: 0;
