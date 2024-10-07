@@ -3,18 +3,19 @@ import { useQuizz } from "../../Context/QuizzContext";
 import { Container } from "../../Styles/GlobalStyles";
 import ThemeSelector from "../Home/ThemeSelector";
 import Welcome from "../Home/Welcome";
+import Button from "../Common/Button";
 
 const AnswerList = () => {
-  const { currentQuizz, index, dispatch, status } = useQuizz();
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const { currentQuizz, index, dispatch, status, selectedAnswer } = useQuizz();
   const [showWarning, setShowWarning] = useState(false);
   const currentQuestion = currentQuizz?.questions[index];
+  const hasNextQuestion = index < currentQuizz.questions.length - 1;
+  const isCorrectAnswer = (option) => option === currentQuestion?.answer;
+  const isSubmitted = status === "submit";
 
   const handleAnswerClick = (answer) => {
-    if (status !== "answered") {
-      setSelectedAnswer(answer);
-      setShowWarning(false);
-    }
+    dispatch({ type: "newAnswer", payload: answer });
+    setShowWarning(false);
   };
 
   const handleSubmitAnswer = () => {
@@ -22,17 +23,41 @@ const AnswerList = () => {
       setShowWarning(true);
       return;
     }
+    if (index === currentQuizz?.questions.length - 1) {
+      dispatch({ type: "finished" });
+      return;
+    }
     dispatch({ type: "submitAnswer", payload: selectedAnswer });
   };
 
   const handleNextQuestion = () => {
     dispatch({ type: "nextQuestion" });
-    setSelectedAnswer(null);
     setShowWarning(false);
   };
 
-  const isCorrectAnswer = (option) => option === currentQuestion?.answer;
-  const isAnswered = status === "answered";
+  const getButtonStyle = (option) => {
+    let style = {
+      width: "100%",
+      textAlign: "left",
+      padding: "12px",
+      margin: "5px 0",
+      borderRadius: "4px",
+      cursor: isSubmitted ? "default" : "pointer",
+      border: "2px solid transparent",
+    };
+
+    if (isSubmitted) {
+      if (isCorrectAnswer(option)) {
+        style.border = "2px solid green";
+      } else if (option === selectedAnswer) {
+        style.border = "2px solid red";
+      }
+    } else if (option === selectedAnswer) {
+      style.border = "2px solid purple";
+    }
+
+    return style;
+  };
 
   if (!currentQuizz) {
     return (
@@ -44,49 +69,37 @@ const AnswerList = () => {
   }
 
   return (
-    <div>
-      <h2>{currentQuestion.question}</h2>
-      <ul>
-        {currentQuestion?.options.map((option) => (
-          <li key={option}>
+    <div style={{ padding: "16px" }}>
+      <ul style={{ listStyle: "none", padding: 0 }}>
+        {currentQuestion.options.map((option) => (
+          <li key={option} style={{ marginBottom: "8px" }}>
             <button
               onClick={() => handleAnswerClick(option)}
-              disabled={isAnswered}
-              style={{
-                border: isAnswered
-                  ? isCorrectAnswer(option)
-                    ? "2px solid green"
-                    : option === selectedAnswer
-                    ? "2px solid red"
-                    : "2px solid transparent"
-                  : option === selectedAnswer
-                  ? "2px solid blue"
-                  : "2px solid transparent",
-                backgroundColor: "white",
-                padding: "10px",
-                margin: "5px",
-                cursor: isAnswered ? "default" : "pointer",
-              }}
+              disabled={isSubmitted}
+              style={getButtonStyle(option)}
             >
-              {option}
-              {isAnswered && isCorrectAnswer(option) && " ✅"}
-              {isAnswered &&
+              <span>{option}</span>
+              {isSubmitted && isCorrectAnswer(option) && (
+                <span style={{ fontSize: "1.2em" }}>✅</span>
+              )}
+              {isSubmitted &&
                 !isCorrectAnswer(option) &&
-                option === selectedAnswer &&
-                " ❌"}
+                option === selectedAnswer && (
+                  <span style={{ fontSize: "1.2em" }}>❌</span>
+                )}
             </button>
           </li>
         ))}
       </ul>
+      <Button
+        isSubmitted={isSubmitted}
+        hasNextQuestion={hasNextQuestion}
+        onHandleSubmitAnswer={handleSubmitAnswer}
+        onHandleNextQuestion={handleNextQuestion}
+      />
+
       {showWarning && (
-        <p style={{ color: "red" }}>
-          Veuillez sélectionner une réponse avant de soumettre.
-        </p>
-      )}
-      {!isAnswered ? (
-        <button onClick={handleSubmitAnswer}>Soumettre la réponse</button>
-      ) : (
-        <button onClick={handleNextQuestion}>Question suivante</button>
+        <p style={{ marginTop: "2rem" }}>❌ Please select an answer</p>
       )}
     </div>
   );

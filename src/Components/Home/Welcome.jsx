@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useQuizz } from "../../Context/QuizzContext";
 
 const PrimaryTitle = styled.h1`
   font-size: 6.4rem;
@@ -16,14 +17,20 @@ const SecondaryTitle = styled.p`
 `;
 
 const Welcome = () => {
+  const { status } = useQuizz();
+  const isFinished = status === "finished";
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <PrimaryTitle>
-        Welcome to the
+        {isFinished ? "Quizz completed" : "Welcome to the"}
         <br />
-        <BoldPrimaryTitle>Frontend Quiz!</BoldPrimaryTitle>
+        <BoldPrimaryTitle>
+          {isFinished ? "You Scored..." : " Frontend Quiz!"}
+        </BoldPrimaryTitle>
       </PrimaryTitle>
-      <SecondaryTitle>Pick a subject to get started.</SecondaryTitle>
+      <SecondaryTitle>
+        {isFinished ? "" : "Pick a subject to get started."}
+      </SecondaryTitle>
     </div>
   );
 };

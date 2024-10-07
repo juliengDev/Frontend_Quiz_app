@@ -8,7 +8,8 @@ const initialState = {
   themes: ["HTML", "CSS", "Javascript", "Accessibility"],
   status: "loading",
   index: 0,
-  answer: null,
+  points: 0,
+  selectedAnswer: null,
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -26,31 +27,44 @@ function reducer(state, action) {
         currentQuizz: selectedQuizz,
         status: "selected",
         index: 0,
-        answer: null,
+        selectedAnswer: null,
       };
     }
-    case "newAnswer": {
+    case "newAnswer":
+      return {
+        ...state,
+        selectedAnswer: action.payload,
+      };
+
+    case "submitAnswer": {
       const isCorrect =
         state.currentQuizz.questions[state.index].answer === action.payload;
       return {
         ...state,
-        answer: action.payload,
-        status: isCorrect ? "correct" : "wrong",
+
+        status: "submit",
+        points: isCorrect ? state.points + 1 : state.points,
       };
     }
-    case "submitAnswer":
-      return {
-        ...state,
-        status: "answered",
-        selectedAnswer: action.payload,
-      };
 
     case "nextQuestion":
       return {
         ...state,
         index: state.index + 1,
-        answer: null,
+        selectedAnswer: null,
         status: "active",
+      };
+    case "finished":
+      return { ...state, status: "finished" };
+    case "PlayAgain":
+      return {
+        ...state,
+        status: "ready",
+        index: 0,
+        points: 0,
+        selectedAnswer: null,
+        currentQuizz: null,
+        theme: "",
       };
     default:
       throw new Error("Action unknown");
@@ -69,9 +83,10 @@ function QuizzProvider({ children }) {
       theme,
       status,
       index,
-      answer,
       currentQuizz,
       themes,
+      selectedAnswer,
+      points,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -101,9 +116,10 @@ function QuizzProvider({ children }) {
         dispatch,
         status,
         index,
-        answer,
+        selectedAnswer,
         currentQuizz,
         themes,
+        points,
       }}
     >
       {children}

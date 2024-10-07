@@ -1,19 +1,23 @@
 import "./App.css";
-import GlobalStyle from "./Styles/GlobalStyles";
-import ThemeProvider from "./Components/Common/ThemeProvider";
 import { useQuizz } from "./Context/QuizzContext";
-import Header from "./Components/Common/Header";
-import useLocalStorage from "use-local-storage";
-import Welcome from "./Components/Home/Welcome";
-import ThemeSelector from "./Components/Home/ThemeSelector";
-import Loader from "./Components/Common/Loader";
-import Error from "./Components/Common/Error";
-import QuestionDisplay from "./Components/Quiz/QuestionDisplay";
-import ProgressBar from "./Components/Quiz/ProgressBar";
-import AnswerList from "./Components/Quiz/AnswerList";
-import ScoreDisplay from "./Components/Results/ScoreDisplay";
-import PlayAgainButton from "./Components/Results/PlayAgainButton";
+import GlobalStyle from "./Styles/GlobalStyles";
 import { Container } from "./Styles/GlobalStyles";
+import useLocalStorage from "use-local-storage";
+
+import {
+  ThemeProvider,
+  Header,
+  Loader,
+  Error,
+  Welcome,
+  ThemeSelector,
+  QuestionDisplay,
+  ProgressBar,
+  AnswerList,
+  ScoreDisplay,
+  PlayAgainButton,
+} from "./Components/index.js";
+import Button from "./Components/Common/Button.jsx";
 
 function App() {
   const [isDark, setIsDark] = useLocalStorage("isDark", false);
@@ -22,7 +26,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider isDark={isDark} setIsDark={setIsDark}>
+      <ThemeProvider isDark={isDark}>
         <Header setIsDark={setIsDark} isDark={isDark} />
         <Container>
           {status === "loading" && <Loader />}
@@ -35,6 +39,7 @@ function App() {
           )}
           {(status === "selected" ||
             status === "active" ||
+            status === "submit" ||
             status === "answered") && (
             <>
               <div className="questions">
@@ -47,10 +52,13 @@ function App() {
             </>
           )}
           {status === "finished" && (
-            <div className="score">
-              <ScoreDisplay />
-              <PlayAgainButton />
-            </div>
+            <>
+              <Welcome />
+              <div>
+                <ScoreDisplay />
+                <Button />
+              </div>
+            </>
           )}
         </Container>
       </ThemeProvider>

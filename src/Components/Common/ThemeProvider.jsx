@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 
 const getBackgroundImage = (theme, device) => {
@@ -42,23 +42,7 @@ const Main = styled.main`
   }
 `;
 
-const ThemeProvider = ({ children, isDark, setIsDark }) => {
-  // const [systemPreference, setSystemPreference] = useState(false);
-
-  // useEffect(() => {
-  //   const mediaQuery = window.matchMedia("(prefers-color-scheme: ligth)");
-  //   setSystemPreference(mediaQuery.matches);
-
-  //   const handler = (e) => setSystemPreference(e.matches);
-  //   mediaQuery.addEventListener("change", handler);
-
-  //   return () => mediaQuery.removeEventListener("change", handler);
-  // }, []);
-
-  // useEffect(() => {
-  //   setIsDark(systemPreference);
-  // }, [systemPreference, setIsDark]);
-
+const ThemeProvider = ({ children, isDark }) => {
   useEffect(() => {
     const body = document.body;
     body.setAttribute("data-theme", isDark ? "dark" : "light");
@@ -70,11 +54,7 @@ const ThemeProvider = ({ children, isDark, setIsDark }) => {
   }, [isDark]);
 
   return (
-    <Main
-      className="container"
-      $isDark={isDark}
-      data-theme={isDark ? "dark" : "light"}
-    >
+    <Main className="container" $isDark={isDark}>
       {children}
     </Main>
   );

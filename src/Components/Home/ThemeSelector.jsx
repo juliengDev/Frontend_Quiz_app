@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useQuizz } from "../../Context/QuizzContext";
 import Icon from "../Common/Icon";
+import { motion } from "framer-motion";
 
 const ThemeList = styled.ul`
   display: flex;
@@ -9,7 +10,7 @@ const ThemeList = styled.ul`
   width: 100%;
   max-width: 56.4rem;
 `;
-const ThemeButtons = styled.button`
+const ThemeButtons = styled(motion.button)`
   display: flex;
   align-items: center;
   gap: 3.2rem;
@@ -37,6 +38,9 @@ const ThemeSelector = ({ isDark }) => {
           $isDark={isDark}
           key={theme}
           onClick={() => handleSetTheme(theme)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
           <Icon theme={theme} />
           <ThemeTitle>
