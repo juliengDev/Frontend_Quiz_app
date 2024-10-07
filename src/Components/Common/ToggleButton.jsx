@@ -17,8 +17,8 @@ const ToggleContainer = styled.div`
 `;
 
 const Switch = styled.div`
-  width: 3rem;
-  height: 2rem;
+  width: 48px;
+  height: 28px;
   background-color: var(--toggle-bg);
   display: flex;
   align-items: center;
@@ -27,6 +27,10 @@ const Switch = styled.div`
   padding: 0.2rem 0.4rem;
   cursor: pointer;
   transition: background-color 250ms ease-in-out;
+  @media (max-width: 375px) {
+    width: 32px;
+    height: 20px;
+  }
 
   &[data-ison="true"] {
     justify-content: flex-end;
@@ -34,10 +38,14 @@ const Switch = styled.div`
 `;
 
 const Handle = styled(motion.div)`
-  width: 1.2em;
-  height: 1.2em;
+  width: 20px;
+  height: 20px;
   background-color: var(--toggle-fg);
   border-radius: 2em;
+  @media (max-width: 375px) {
+    width: 12px;
+    height: 12px;
+  }
 `;
 
 const ToggleButton = ({ isOn, setIsDark }) => {

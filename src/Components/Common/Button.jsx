@@ -1,5 +1,4 @@
 import { useQuizz } from "../../Context/QuizzContext";
-
 function Button({
   isSubmitted,
   hasNextQuestion,
@@ -17,7 +16,7 @@ function Button({
   };
 
   const handlePlayAgain = () => {
-    dispatch({ type: "PlayAgain" });
+    dispatch({ type: "playAgain" });
   };
 
   return (

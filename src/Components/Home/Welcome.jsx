@@ -1,10 +1,22 @@
 import styled from "styled-components";
 import { useQuizz } from "../../Context/QuizzContext";
 
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  gap: 4.8rem;
+  @media (max-width: 870px) {
+    gap: 1.6rem;
+  }
+`;
 const PrimaryTitle = styled.h1`
   font-size: 6.4rem;
   font-weight: 300;
-  margin-bottom: 4.6rem;
+  margin-bottom: 8px;
+  @media (max-width: 375px) {
+    font-size: 4rem;
+  }
 `;
 const BoldPrimaryTitle = styled.span`
   font-weight: 500;
@@ -20,7 +32,7 @@ const Welcome = () => {
   const { status } = useQuizz();
   const isFinished = status === "finished";
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <TitleContainer>
       <PrimaryTitle>
         {isFinished ? "Quizz completed" : "Welcome to the"}
         <br />
@@ -31,7 +43,7 @@ const Welcome = () => {
       <SecondaryTitle>
         {isFinished ? "" : "Pick a subject to get started."}
       </SecondaryTitle>
-    </div>
+    </TitleContainer>
   );
 };
 export default Welcome;

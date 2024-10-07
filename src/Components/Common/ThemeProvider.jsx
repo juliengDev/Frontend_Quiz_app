@@ -26,17 +26,28 @@ const getBackgroundImage = (theme, device) => {
 };
 
 const Main = styled.main`
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+  padding: 9.7rem 14rem;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100dvh;
+  transition: background-color 250ms ease-in-out;
+
   background-image: ${({ $isDark }) =>
     `url(${getBackgroundImage($isDark ? "dark" : "light", "desktop")})`};
   background-repeat: no-repeat;
-  /* background-position: center; */
 
-  @media (max-width: 768px) {
+  @media (max-width: 870px) {
+    padding: 5.4rem 6.4rem 0;
+
     background-image: ${({ $isDark }) =>
       `url(${getBackgroundImage($isDark ? "dark" : "light", "tablet")})`};
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 375px) {
+    padding: 2.6rem 2.4rem;
+
     background-image: ${({ $isDark }) =>
       `url(${getBackgroundImage($isDark ? "dark" : "light", "mobile")})`};
   }
@@ -53,11 +64,7 @@ const ThemeProvider = ({ children, isDark }) => {
     };
   }, [isDark]);
 
-  return (
-    <Main className="container" $isDark={isDark}>
-      {children}
-    </Main>
-  );
+  return <Main $isDark={isDark}>{children}</Main>;
 };
 
 export default ThemeProvider;

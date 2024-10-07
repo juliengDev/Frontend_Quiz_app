@@ -1,7 +1,7 @@
 import "./App.css";
+import "./Styles/reset.css";
 import { useQuizz } from "./Context/QuizzContext";
 import GlobalStyle from "./Styles/GlobalStyles";
-import { Container } from "./Styles/GlobalStyles";
 import useLocalStorage from "use-local-storage";
 
 import {
@@ -15,9 +15,11 @@ import {
   ProgressBar,
   AnswerList,
   ScoreDisplay,
-  PlayAgainButton,
+  MainContainer,
+  AnswerContainer,
+  QuestionsContainer,
+  Button,
 } from "./Components/index.js";
-import Button from "./Components/Common/Button.jsx";
 
 function App() {
   const [isDark, setIsDark] = useLocalStorage("isDark", false);
@@ -28,7 +30,7 @@ function App() {
       <GlobalStyle />
       <ThemeProvider isDark={isDark}>
         <Header setIsDark={setIsDark} isDark={isDark} />
-        <Container>
+        <MainContainer>
           {status === "loading" && <Loader />}
           {status === "error" && <Error />}
           {status === "ready" && (
@@ -42,13 +44,13 @@ function App() {
             status === "submit" ||
             status === "answered") && (
             <>
-              <div className="questions">
+              <QuestionsContainer>
                 <QuestionDisplay />
                 <ProgressBar />
-              </div>
-              <div className="answers">
-                <AnswerList />
-              </div>
+              </QuestionsContainer>
+              <AnswerContainer>
+                <AnswerList isDark={isDark} />
+              </AnswerContainer>
             </>
           )}
           {status === "finished" && (
@@ -60,7 +62,7 @@ function App() {
               </div>
             </>
           )}
-        </Container>
+        </MainContainer>
       </ThemeProvider>
     </>
   );

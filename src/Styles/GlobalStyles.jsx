@@ -41,10 +41,3 @@ export default GlobalStyle;
 	•	900 : Black (Heavy)
   
   */
-
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 9.9rem 0;
-  gap: 14.3rem;
-`;

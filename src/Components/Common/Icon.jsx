@@ -6,11 +6,10 @@ const IconContainer = styled.div`
   align-items: center;
   background-color: ${(props) => props.$backgroundColor || "transparent"};
   border-radius: 8px;
-  width: 5.6rem;
-  height: 5.6rem;
+
   img {
-    height: 40px;
-    width: 40px;
+    width: 56px;
+    height: 56px;
   }
   @media (max-width: 768px) {
     width: 4rem;

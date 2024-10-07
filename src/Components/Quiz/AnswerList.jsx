@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { useQuizz } from "../../Context/QuizzContext";
-import { Container } from "../../Styles/GlobalStyles";
 import ThemeSelector from "../Home/ThemeSelector";
 import Welcome from "../Home/Welcome";
 import Button from "../Common/Button";
+import styled from "styled-components";
+import MainContainer from "../Common/MainContainer";
 
-const AnswerList = () => {
+const AnswerContainer = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+`;
+
+const AnswerElement = styled.li``;
+
+const AnswerList = ({ isDark }) => {
   const { currentQuizz, index, dispatch, status, selectedAnswer } = useQuizz();
   const [showWarning, setShowWarning] = useState(false);
   const currentQuestion = currentQuizz?.questions[index];
@@ -43,7 +52,7 @@ const AnswerList = () => {
       margin: "5px 0",
       borderRadius: "4px",
       cursor: isSubmitted ? "default" : "pointer",
-      border: "2px solid transparent",
+      backgroundColor: isDark ? "#3b4d66" : "#FFF",
     };
 
     if (isSubmitted) {
@@ -61,18 +70,18 @@ const AnswerList = () => {
 
   if (!currentQuizz) {
     return (
-      <Container>
+      <MainContainer>
         <Welcome />
         <ThemeSelector />
-      </Container>
+      </MainContainer>
     );
   }
 
   return (
-    <div style={{ padding: "16px" }}>
-      <ul style={{ listStyle: "none", padding: 0 }}>
+    <>
+      <AnswerContainer>
         {currentQuestion.options.map((option) => (
-          <li key={option} style={{ marginBottom: "8px" }}>
+          <AnswerElement key={option}>
             <button
               onClick={() => handleAnswerClick(option)}
               disabled={isSubmitted}
@@ -88,9 +97,9 @@ const AnswerList = () => {
                   <span style={{ fontSize: "1.2em" }}>❌</span>
                 )}
             </button>
-          </li>
+          </AnswerElement>
         ))}
-      </ul>
+      </AnswerContainer>
       <Button
         isSubmitted={isSubmitted}
         hasNextQuestion={hasNextQuestion}
@@ -101,7 +110,7 @@ const AnswerList = () => {
       {showWarning && (
         <p style={{ marginTop: "2rem" }}>❌ Please select an answer</p>
       )}
-    </div>
+    </>
   );
 };
 

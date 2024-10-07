@@ -9,6 +9,9 @@ const ThemeList = styled.ul`
   gap: 2.4rem;
   width: 100%;
   max-width: 56.4rem;
+  @media (max-width: 870px) {
+    max-width: 64rem;
+  }
 `;
 const ThemeButtons = styled(motion.button)`
   display: flex;
@@ -37,7 +40,9 @@ const ThemeSelector = ({ isDark }) => {
         <ThemeButtons
           $isDark={isDark}
           key={theme}
-          onClick={() => handleSetTheme(theme)}
+          onClick={() =>
+            handleSetTheme(theme === "Javascript" ? "JavaScript" : theme)
+          }
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
