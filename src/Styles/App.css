@@ -1,11 +1,11 @@
 :root {
-  // Root colors
+  /* Root colors*/
   --color-grey: #817d92;
   --color-darkGrey: #24232c;
   --color-veryDarkGrey: #18171f;
   --color-pure-white: #ffffff;
 
-  // App Colors
+  /* App Colors */
   --color-Navy: #3b4d66;
   --color-Dark-Navy: #313e51;
   --color-Grey-Navy: #626c7f;
@@ -22,7 +22,7 @@
   --color-Light-Bluish: #abc1e1;
   --color-Red: #ee5454;
 
-  // Dark-Light Theme
+  /*  Dark-Light Theme */
   --background-color: #f6f6f6;
   --primary-text-color: #313e51;
   --secondary-text-color: #fff;
@@ -53,8 +53,9 @@
 
 html {
   box-sizing: border-box;
-  // This defines what 1rem is
-  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  /* This defines what 1rem is */
+  /* 1 rem = 10px; 10px/16px = 62.5% */
+  font-size: 62.5%;
 }
 a:link,
 a:visited,
