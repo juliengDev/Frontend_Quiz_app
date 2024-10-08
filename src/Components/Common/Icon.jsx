@@ -45,7 +45,7 @@ const Icon = ({ name, theme }) => {
   }
   return (
     <IconContainer $backgroundColor={bgColor}>
-      <img src={`/src/assets/images/${iconName}.svg`} alt={name} />
+      <img src={`/images/${iconName}.svg`} alt={name} />
     </IconContainer>
   );
 };

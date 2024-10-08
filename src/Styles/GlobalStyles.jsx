@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
-import RubikItalic from "/src/assets/fonts/Rubik-Italic-VariableFont_wght.ttf";
-import Rubik from "/src/assets/fonts/Rubik-VariableFont_wght.ttf";
+import RubikItalic from "/fonts/Rubik-Italic-VariableFont_wght.ttf";
+import Rubik from "/fonts/Rubik-VariableFont_wght.ttf";
 
 const GlobalStyle = createGlobalStyle`
   @font-face {

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { moonDark } from "../../../public/images/icon-moon-dark.jsx";
-import { moonLight } from "../../../public/images/icon-moon-light.jsx";
-import { sunDark } from "../../../public/images/icon-sun-dark.jsx";
-import { sunLight } from "../../../public/images/icon-sun-light.jsx";
+import { moonDark } from "/images/icon-moon-dark.jsx";
+import { moonLight } from "/images/icon-moon-light.jsx";
+import { sunDark } from "/images/icon-sun-dark.jsx";
+import { sunLight } from "/images/icon-sun-light.jsx";
 import { motion } from "framer-motion";
 
 const spring = {

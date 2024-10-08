@@ -5,8 +5,8 @@ import Welcome from "../Home/Welcome";
 import Button from "../Common/Button";
 import styled from "styled-components";
 import MainContainer from "../Common/MainContainer";
-import correct from "../../assets/images/icon-correct.svg";
-import incorrect from "../../assets/images/icon-incorrect.svg";
+import correct from "/images/icon-correct.svg";
+import incorrect from "/images/icon-incorrect.svg";
 
 const AnswerContainer = styled.ul`
   display: flex;
