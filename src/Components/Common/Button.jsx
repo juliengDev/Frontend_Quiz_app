@@ -12,6 +12,10 @@ const ButtonSubmit = styled.button`
   border-radius: 24px;
   font-size: 2.8rem;
   font-weight: 500;
+
+  @media (max-width: 375px) {
+    font-size: 1.8rem;
+  }
 `;
 function Button({
   isSubmitted,

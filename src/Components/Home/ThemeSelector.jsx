@@ -27,6 +27,9 @@ const ThemeButtons = styled(motion.button)`
 const ThemeTitle = styled.p`
   font-size: 2.8rem;
   font-weight: 500;
+  @media (max-width: 375px) {
+    font-size: 1.8rem;
+  }
 `;
 const ThemeSelector = ({ isDark }) => {
   const { dispatch, themes } = useQuizz();

@@ -67,6 +67,9 @@ const Answer = styled.p`
   font-size: 2.8rem;
   font-weight: 500;
   width: 100%;
+  @media (max-width: 375px) {
+    font-size: 1.8rem;
+  }
 `;
 const IconContainer = styled.div`
   position: relative;

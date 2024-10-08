@@ -11,6 +11,10 @@ const ProgressBarContainer = styled.div`
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 12.4rem;
+
+  @media (max-width: 375px) {
+    margin-bottom: 0rem;
+  }
 `;
 
 const ProgressFill = styled.div`

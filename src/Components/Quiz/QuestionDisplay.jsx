@@ -7,6 +7,9 @@ const QuestionProgress = styled.p`
   line-height: 1.5;
   color: var(--color-Grey-Navy);
   margin-bottom: 2.7rem;
+  @media (max-width: 375px) {
+    margin-bottom: 1.2rem;
+  }
 `;
 const QuestionTitle = styled.h2`
   align-self: start;
@@ -14,6 +17,11 @@ const QuestionTitle = styled.h2`
   font-weight: 500;
   line-height: 1.2;
   margin-bottom: 18rem;
+
+  @media (max-width: 375px) {
+    font-size: 2rem;
+    margin-bottom: 2.4rem;
+  }
 `;
 
 const QuestionDisplay = () => {
