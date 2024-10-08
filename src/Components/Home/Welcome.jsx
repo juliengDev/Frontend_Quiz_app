@@ -14,7 +14,7 @@ const PrimaryTitle = styled.h1`
   font-size: 6.4rem;
   font-weight: 300;
   margin-bottom: 8px;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px), (max-device-width: 375px) {
     font-size: 4rem;
   }
 `;

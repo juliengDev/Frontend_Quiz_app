@@ -19,8 +19,6 @@ const IconContainer = styled.div`
       width: 28.57px;
     }
   }
-  @media screen and (max-width: 375px) {
-  }
 `;
 const Icon = ({ name, theme }) => {
   const iconName = `icon-${theme.toLowerCase()}`;

@@ -7,7 +7,7 @@ const SectionMain = styled.main`
     flex-direction: column;
     gap: 6.4rem;
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px), (max-device-width: 375px) {
     gap: 4rem;
   }
 `;

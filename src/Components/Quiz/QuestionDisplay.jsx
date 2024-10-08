@@ -7,7 +7,7 @@ const QuestionProgress = styled.p`
   line-height: 1.5;
   color: var(--color-Grey-Navy);
   margin-bottom: 2.7rem;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px), (max-device-width: 375px) {
     margin-bottom: 1.2rem;
   }
 `;
@@ -18,7 +18,7 @@ const QuestionTitle = styled.h2`
   line-height: 1.2;
   margin-bottom: 18rem;
 
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px), (max-device-width: 375px) {
     font-size: 2rem;
     margin-bottom: 2.4rem;
   }

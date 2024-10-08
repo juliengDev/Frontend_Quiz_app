@@ -27,7 +27,7 @@ const ThemeButtons = styled(motion.button)`
 const ThemeTitle = styled.p`
   font-size: 2.8rem;
   font-weight: 500;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px), (max-device-width: 375px) {
     font-size: 1.8rem;
   }
 `;

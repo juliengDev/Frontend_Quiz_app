@@ -23,7 +23,7 @@ const Switch = styled.div`
   padding: 0.2rem 0.4rem;
   cursor: pointer;
   transition: background-color 250ms ease-in-out;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px), (max-device-width: 375px) {
     width: 32px;
     height: 20px;
   }
@@ -38,7 +38,7 @@ const Handle = styled(motion.div)`
   height: 20px;
   background-color: var(--toggle-fg);
   border-radius: 2em;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px), (max-device-width: 375px) {
     width: 12px;
     height: 12px;
   }

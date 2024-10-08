@@ -67,7 +67,14 @@ const Answer = styled.p`
   font-size: 2.8rem;
   font-weight: 500;
   width: 100%;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px), (max-device-width: 375px) {
+    font-size: 1.8rem;
+  }
+  /* 1179×2556 pixels at 460ppi */
+  @media only screen and (width: 430px) and (height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    font-size: 1.8rem;
+  }
+  @media only screen and (width: 393px) and (height: 852px) and (-webkit-device-pixel-ratio: 3) {
     font-size: 1.8rem;
   }
 `;
