@@ -6,7 +6,7 @@ const IconContainer = styled.div`
   align-items: center;
   background-color: ${(props) => props.$backgroundColor || "transparent"};
   border-radius: 8px;
-
+  /* padding: 0.8rem; */
   img {
     width: 56px;
     height: 56px;
