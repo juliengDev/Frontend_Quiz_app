@@ -20,8 +20,9 @@ const IconContainer = styled.div`
     }
   }
 `;
+
 const Icon = ({ name, theme }) => {
-  const iconName = `icon-${theme.toLowerCase()}`;
+  const iconName = theme ? `icon-${theme.toLowerCase()}` : "icon-default";
   let bgColor = "";
   switch (theme) {
     case "Accessibility":
@@ -40,9 +41,12 @@ const Icon = ({ name, theme }) => {
       bgColor = "transparent";
       break;
   }
+
+  const altText = name || `Icon for ${theme || "unknown"} theme`;
+
   return (
     <IconContainer $backgroundColor={bgColor}>
-      <img src={`/images/${iconName}.svg`} alt={name} />
+      <img src={`/images/${iconName}.svg`} alt={altText} />
     </IconContainer>
   );
 };

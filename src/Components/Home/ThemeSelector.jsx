@@ -39,21 +39,22 @@ const ThemeSelector = ({ isDark }) => {
   return (
     <ThemeList>
       {themes.map((theme) => (
-        <ThemeButtons
-          $isDark={isDark}
-          key={theme}
-          onClick={() =>
-            handleSetTheme(theme === "Javascript" ? "JavaScript" : theme)
-          }
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-        >
-          <Icon theme={theme} />
-          <ThemeTitle>
-            {theme === "Javascript" ? "JavaScript" : theme}
-          </ThemeTitle>
-        </ThemeButtons>
+        <li key={theme}>
+          <ThemeButtons
+            $isDark={isDark}
+            onClick={() =>
+              handleSetTheme(theme === "Javascript" ? "JavaScript" : theme)
+            }
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <Icon theme={theme} />
+            <ThemeTitle>
+              {theme === "Javascript" ? "JavaScript" : theme}
+            </ThemeTitle>
+          </ThemeButtons>
+        </li>
       ))}
     </ThemeList>
   );
