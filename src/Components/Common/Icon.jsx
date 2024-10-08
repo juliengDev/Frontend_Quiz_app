@@ -11,7 +11,7 @@ const IconContainer = styled.div`
     width: 56px;
     height: 56px;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 870px) {
     width: 4rem;
     height: 4rem;
     img {

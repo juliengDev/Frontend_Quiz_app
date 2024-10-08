@@ -11,7 +11,7 @@ const IconGroup = styled.div`
 const IconTitle = styled.h2`
   font-size: 2.8rem;
   font-weight: 500;
-  @media screen and (max-width: 375px), (max-device-width: 375px) {
+  @media screen and (max-width: 450px), (max-device-width: 450px) {
     font-size: 1.8rem;
   }
 `;

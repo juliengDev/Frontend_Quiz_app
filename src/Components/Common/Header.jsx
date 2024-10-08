@@ -11,7 +11,8 @@ const Head = styled.header`
   @media screen and (max-width: 870px) {
     margin-bottom: 6.3rem;
   }
-  @media screen and (max-width: 375px), (max-device-width: 375px) {
+
+  @media screen and (max-width: 450px), (max-device-width: 450px) {
     margin-bottom: 3.2rem;
   }
 `;

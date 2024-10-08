@@ -45,7 +45,7 @@ const Main = styled.div`
       `url(${getBackgroundImage($isDark ? "dark" : "light", "tablet")})`};
   }
 
-  @media screen and (max-width: 375px), (max-device-width: 375px) {
+  @media screen and (max-width: 450px), (max-device-width: 450px) {
     padding: 2.6rem 2.4rem 25.1rem;
 
     background-image: ${({ $isDark }) =>
