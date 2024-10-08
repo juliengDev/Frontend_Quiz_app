@@ -12,7 +12,7 @@ const ProgressBarContainer = styled.div`
   overflow: hidden;
   margin-bottom: 12.4rem;
 
-  @media (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     margin-bottom: 0rem;
   }
 `;

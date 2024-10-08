@@ -67,7 +67,7 @@ const Answer = styled.p`
   font-size: 2.8rem;
   font-weight: 500;
   width: 100%;
-  @media (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.8rem;
   }
 `;
@@ -135,7 +135,6 @@ const AnswerList = ({ isDark }) => {
       alignItems: "center",
       width: "100%",
       textAlign: "left",
-      margin: "5px 0",
       borderRadius: "24px",
       border: "2px solid transparent",
       cursor: isSubmitted ? "default" : "pointer",

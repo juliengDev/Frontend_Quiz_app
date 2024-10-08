@@ -9,7 +9,7 @@ const ThemeList = styled.ul`
   gap: 2.4rem;
   width: 100%;
   max-width: 56.4rem;
-  @media (max-width: 870px) {
+  @media screen and (max-width: 870px) {
     max-width: 64rem;
   }
 `;
@@ -27,7 +27,7 @@ const ThemeButtons = styled(motion.button)`
 const ThemeTitle = styled.p`
   font-size: 2.8rem;
   font-weight: 500;
-  @media (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.8rem;
   }
 `;

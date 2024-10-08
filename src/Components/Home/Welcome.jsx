@@ -6,7 +6,7 @@ const TitleContainer = styled.section`
   flex-direction: column;
   align-self: start;
   gap: 4.8rem;
-  @media (max-width: 870px) {
+  @media screen and (max-width: 870px) {
     gap: 1.6rem;
   }
 `;
@@ -14,7 +14,7 @@ const PrimaryTitle = styled.h1`
   font-size: 6.4rem;
   font-weight: 300;
   margin-bottom: 8px;
-  @media (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     font-size: 4rem;
   }
 `;

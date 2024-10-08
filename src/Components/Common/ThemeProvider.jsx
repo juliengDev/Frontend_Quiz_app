@@ -38,14 +38,14 @@ const Main = styled.div`
     `url(${getBackgroundImage($isDark ? "dark" : "light", "desktop")})`};
   background-repeat: no-repeat;
 
-  @media (max-width: 870px) {
+  @media screen and (max-width: 870px) {
     padding: 5.4rem 6.4rem 24.1rem;
 
     background-image: ${({ $isDark }) =>
       `url(${getBackgroundImage($isDark ? "dark" : "light", "tablet")})`};
   }
 
-  @media (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     padding: 2.6rem 2.4rem 25.1rem;
 
     background-image: ${({ $isDark }) =>

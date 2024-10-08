@@ -13,7 +13,7 @@ const ButtonSubmit = styled.button`
   font-size: 2.8rem;
   font-weight: 500;
 
-  @media (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     font-size: 1.8rem;
   }
 `;

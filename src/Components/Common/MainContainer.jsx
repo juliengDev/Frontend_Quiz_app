@@ -3,11 +3,11 @@ import styled from "styled-components";
 const SectionMain = styled.main`
   display: flex;
   gap: 13.1rem;
-  @media (max-width: 870px) {
+  @media screen and (max-width: 870px) {
     flex-direction: column;
     gap: 6.4rem;
   }
-  @media (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     gap: 4rem;
   }
 `;
