@@ -28,7 +28,7 @@ const getBackgroundImage = (theme, device) => {
 const Main = styled.div`
   background-color: var(--background-color);
   color: var(--primary-text-color);
-  padding: 9.7rem 14rem;
+  padding: 9.7rem 14rem 28rem;
   margin: 0 auto;
   width: 100%;
   min-height: 100dvh;
@@ -39,14 +39,14 @@ const Main = styled.div`
   background-repeat: no-repeat;
 
   @media (max-width: 870px) {
-    padding: 5.4rem 6.4rem 0;
+    padding: 5.4rem 6.4rem 24.1rem;
 
     background-image: ${({ $isDark }) =>
       `url(${getBackgroundImage($isDark ? "dark" : "light", "tablet")})`};
   }
 
   @media (max-width: 375px) {
-    padding: 2.6rem 2.4rem;
+    padding: 2.6rem 2.4rem 25.1rem;
 
     background-image: ${({ $isDark }) =>
       `url(${getBackgroundImage($isDark ? "dark" : "light", "mobile")})`};
