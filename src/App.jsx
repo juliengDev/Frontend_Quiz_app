@@ -23,7 +23,7 @@ import {
 import confetti from "canvas-confetti";
 
 function App() {
-  const [isDark, setIsDark] = useLocalStorage("isDark", false);
+  const [isDark, setIsDark] = useLocalStorage("isDark", true);
   const { status } = useQuizz();
   const [shouldShowConfetti, setShouldShowConfetti] = useState(false);
   const confettiShownRef = useRef(false);
