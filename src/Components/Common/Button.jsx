@@ -28,10 +28,6 @@ function Button({
   const isFinished = status === "finished";
   const isLastQuestion = index === currentQuizz.questions.length - 1;
 
-  // console.log("isSubmitted : " + isSubmitted);
-  // console.log("hasNextQuestion : " + hasNextQuestion);
-  // console.log("isLastQuestion : " + isLastQuestion);
-
   const handlePlayAgain = () => {
     dispatch({ type: "playAgain" });
   };

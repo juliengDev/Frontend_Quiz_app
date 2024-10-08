@@ -58,7 +58,6 @@ const ThemeProvider = ({ children, isDark }) => {
     const body = document.body;
     body.setAttribute("data-theme", isDark ? "dark" : "light");
 
-    // Clean-up function to reset the theme when the component unmounts
     return () => {
       body.removeAttribute("data-theme");
     };

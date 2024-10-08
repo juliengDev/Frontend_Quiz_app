@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./Styles/App.css";
 import "./Styles/reset.css";
 import { useQuizz } from "./Context/QuizzContext";
@@ -26,12 +26,16 @@ function App() {
   const [isDark, setIsDark] = useLocalStorage("isDark", false);
   const { status } = useQuizz();
   const [shouldShowConfetti, setShouldShowConfetti] = useState(false);
+  const confettiShownRef = useRef(false);
 
   useEffect(() => {
-    if (status === "finished" && !shouldShowConfetti) {
+    if (status === "finished" && !confettiShownRef.current) {
       setShouldShowConfetti(true);
+      confettiShownRef.current = true;
+    } else if (status !== "finished") {
+      confettiShownRef.current = false;
     }
-  }, [status, shouldShowConfetti]);
+  }, [status]);
 
   useEffect(() => {
     if (shouldShowConfetti) {
@@ -68,6 +72,7 @@ function App() {
       runAnimation();
     }
   }, [shouldShowConfetti]);
+
   return (
     <>
       <GlobalStyle />
@@ -75,7 +80,9 @@ function App() {
         <Header setIsDark={setIsDark} isDark={isDark} />
         <MainContainer>
           {status === "loading" && <Loader />}
-          {status === "error" && <Error />}
+          {status === "error" && (
+            <Error message="Failed to load quizzes. Please refresh the page." />
+          )}
           {status === "ready" && (
             <>
               <Welcome />

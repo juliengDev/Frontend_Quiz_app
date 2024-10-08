@@ -147,12 +147,12 @@ const AnswerList = ({ isDark }) => {
 
     if (isSubmitted) {
       if (isCorrectAnswer(option) && selectedAnswer === option) {
-        style.border = "2px solid green"; // Bordure verte pour la bonne réponse
+        style.border = "2px solid var(--color-Green-2)";
       } else if (selectedAnswer === option) {
-        style.border = "2px solid red"; // Bordure rouge pour la mauvaise réponse
+        style.border = "2px solid var(--color-Red)";
       }
     } else if (option === selectedAnswer) {
-      style.border = "2px solid var(--color-Purple)"; // Bordure violette pour l'option sélectionnée
+      style.border = "2px solid var(--color-Purple)";
     }
 
     return style;

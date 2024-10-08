@@ -23,14 +23,14 @@ const ProgressFill = styled.div`
   border-radius: 10px;
   width: ${(props) => props.$percentage}%;
   background-color: ${(props) =>
-    props.$percentage === 100 ? "green" : "var(--color-Purple)"};
+    props.$percentage === 100 ? "var(--color-Green-2)" : "var(--color-Purple)"};
   transition: width 0.3s ease;
 `;
 
 const ProgressBar = ({ isDark }) => {
   const { index, currentQuizz } = useQuizz();
   const totalQuestions = currentQuizz?.questions.length;
-  const percentage = ((index + 1) / totalQuestions) * 100; // Calculer le pourcentage
+  const percentage = ((index + 1) / totalQuestions) * 100;
   return (
     <ProgressBarContainer $isDark={isDark}>
       <ProgressFill $percentage={percentage} />
