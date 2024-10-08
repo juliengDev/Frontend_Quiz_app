@@ -219,12 +219,12 @@
         {
           "question": "What is the correct way to write a JavaScript array?",
           "options": [
-            "var colors = (1:'red', 2:'green', 3:'blue')",
-            "var colors = ['red', 'green', 'blue']",
-            "var colors = 'red', 'green', 'blue'",
-            "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')"
+            "const colors = (1:'red', 2:'green', 3:'blue')",
+            "const colors = ['red', 'green', 'blue']",
+            "const colors = 'red', 'green', 'blue'",
+            "const colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')"
           ],
-          "answer": "var colors = ['red', 'green', 'blue']"
+          "answer": "const colors = ['red', 'green', 'blue']"
         },
         {
           "question": "How do you find the number with the highest value of x and y?",
@@ -244,12 +244,12 @@
         {
           "question": "What is the correct way to write a JavaScript object?",
           "options": [
-            "var person = {firstName: 'John', lastName: 'Doe'};",
-            "var person = {firstName = 'John', lastName = 'Doe'};",
-            "var person = (firstName: 'John', lastName: 'Doe');",
-            "var person = (firstName = 'John', lastName = 'Doe');"
+            "const person = {firstName: 'John', lastName: 'Doe'};",
+            "const person = {firstName = 'John', lastName = 'Doe'};",
+            "const person = (firstName: 'John', lastName: 'Doe');",
+            "const person = (firstName = 'John', lastName = 'Doe');"
           ],
-          "answer": "var person = {firstName: 'John', lastName: 'Doe'};"
+          "answer": "const person = {firstName: 'John', lastName: 'Doe'};"
         }
       ]
     },

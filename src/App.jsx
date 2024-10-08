@@ -1,4 +1,4 @@
-import "./App.css";
+import "./Styles/App.css";
 import "./Styles/reset.css";
 import { useQuizz } from "./Context/QuizzContext";
 import GlobalStyle from "./Styles/GlobalStyles";
@@ -14,11 +14,10 @@ import {
   QuestionDisplay,
   ProgressBar,
   AnswerList,
-  ScoreDisplay,
   MainContainer,
   AnswerContainer,
   QuestionsContainer,
-  Button,
+  ScoreDisplay,
 } from "./Components/index.js";
 
 function App() {
@@ -46,7 +45,7 @@ function App() {
             <>
               <QuestionsContainer>
                 <QuestionDisplay />
-                <ProgressBar />
+                <ProgressBar isDark={isDark} />
               </QuestionsContainer>
               <AnswerContainer>
                 <AnswerList isDark={isDark} />
@@ -56,10 +55,7 @@ function App() {
           {status === "finished" && (
             <>
               <Welcome />
-              <div>
-                <ScoreDisplay />
-                <Button />
-              </div>
+              <ScoreDisplay isDark={isDark} />
             </>
           )}
         </MainContainer>

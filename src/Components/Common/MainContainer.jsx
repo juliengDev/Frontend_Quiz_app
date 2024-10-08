@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const SectionMain = styled.section`
+const SectionMain = styled.main`
   display: flex;
-  gap: 14.3rem;
+  gap: 13.1rem;
   @media (max-width: 870px) {
     flex-direction: column;
     gap: 6.4rem;

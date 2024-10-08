@@ -6,13 +6,16 @@ const ProgressBarContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 16px;
-  background-color: var(--color-pure-white);
+  background-color: ${(props) =>
+    props.$isDark ? "#3b4d66" : "var(--color-pure-white)"};
   border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 12.4rem;
 `;
 
 const ProgressFill = styled.div`
   height: 8px;
+  margin: 0 2px;
   border-radius: 10px;
   width: ${(props) => props.$percentage}%;
   background-color: ${(props) =>
@@ -20,12 +23,12 @@ const ProgressFill = styled.div`
   transition: width 0.3s ease;
 `;
 
-const ProgressBar = () => {
+const ProgressBar = ({ isDark }) => {
   const { index, currentQuizz } = useQuizz();
   const totalQuestions = currentQuizz?.questions.length;
   const percentage = ((index + 1) / totalQuestions) * 100; // Calculer le pourcentage
   return (
-    <ProgressBarContainer>
+    <ProgressBarContainer $isDark={isDark}>
       <ProgressFill $percentage={percentage} />
     </ProgressBarContainer>
   );

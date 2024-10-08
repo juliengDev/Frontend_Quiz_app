@@ -21,12 +21,12 @@ const QuestionDisplay = () => {
   const currentQuestion = currentQuizz?.questions[index];
 
   return (
-    <>
+    <div>
       <QuestionProgress>
         Question {index + 1} of {currentQuizz?.questions?.length}
       </QuestionProgress>
       <QuestionTitle>{currentQuestion?.question}</QuestionTitle>
-    </>
+    </div>
   );
 };
 export default QuestionDisplay;

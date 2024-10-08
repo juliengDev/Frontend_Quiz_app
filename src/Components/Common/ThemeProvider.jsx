@@ -25,7 +25,7 @@ const getBackgroundImage = (theme, device) => {
   }
 };
 
-const Main = styled.main`
+const Main = styled.div`
   background-color: var(--background-color);
   color: var(--primary-text-color);
   padding: 9.7rem 14rem;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useQuizz } from "../../Context/QuizzContext";
 
-const TitleContainer = styled.div`
+const TitleContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-self: start;

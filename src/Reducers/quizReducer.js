@@ -26,6 +26,7 @@ function reducer(state, action) {
     case "submitAnswer": {
       const isCorrect =
         state.currentQuizz.questions[state.index].answer === action.payload;
+
       return {
         ...state,
 

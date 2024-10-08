@@ -1,19 +1,32 @@
+import styled from "styled-components";
 import { useQuizz } from "../../Context/QuizzContext";
+
+const ButtonSubmit = styled.button`
+  margin-top: 3.2rem;
+  color: var(--color-pure-white);
+  background-color: var(--color-Purple);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3.2rem 0;
+  border-radius: 24px;
+  font-size: 2.8rem;
+  font-weight: 500;
+`;
 function Button({
   isSubmitted,
   hasNextQuestion,
   onHandleSubmitAnswer,
   onHandleNextQuestion,
+  onHandleBackHomepage,
 }) {
-  const { status, dispatch } = useQuizz();
+  const { status, dispatch, currentQuizz, index } = useQuizz();
   const isFinished = status === "finished";
-  const buttonStyles = {
-    marginTop: "16px",
-    color: "white",
-    padding: "8px 16px",
-    borderRadius: "4px",
-    cursor: "pointer",
-  };
+  const isLastQuestion = index === currentQuizz.questions.length - 1;
+
+  // console.log("isSubmitted : " + isSubmitted);
+  // console.log("hasNextQuestion : " + hasNextQuestion);
+  // console.log("isLastQuestion : " + isLastQuestion);
 
   const handlePlayAgain = () => {
     dispatch({ type: "playAgain" });
@@ -22,38 +35,24 @@ function Button({
   return (
     <>
       {!isSubmitted && !isFinished && (
-        <button
-          onClick={onHandleSubmitAnswer}
-          style={{
-            ...buttonStyles,
-            backgroundColor: "blue",
-          }}
-        >
-          Soumettre la réponse
-        </button>
+        <ButtonSubmit onClick={onHandleSubmitAnswer}>
+          Submit Answer
+        </ButtonSubmit>
       )}
 
-      {isSubmitted && hasNextQuestion && (
-        <button
-          onClick={onHandleNextQuestion}
-          style={{
-            ...buttonStyles,
-            backgroundColor: "green",
-          }}
-        >
-          Question suivante
-        </button>
+      {isSubmitted && hasNextQuestion && !isLastQuestion && (
+        <ButtonSubmit onClick={onHandleNextQuestion}>
+          Next Question
+        </ButtonSubmit>
       )}
+      {isSubmitted && !hasNextQuestion && isLastQuestion && (
+        <ButtonSubmit onClick={onHandleBackHomepage}>
+          Get your score
+        </ButtonSubmit>
+      )}
+
       {isFinished && (
-        <button
-          onClick={handlePlayAgain}
-          style={{
-            ...buttonStyles,
-            backgroundColor: "green",
-          }}
-        >
-          PlayAgain
-        </button>
+        <ButtonSubmit onClick={handlePlayAgain}>PlayAgain</ButtonSubmit>
       )}
     </>
   );
