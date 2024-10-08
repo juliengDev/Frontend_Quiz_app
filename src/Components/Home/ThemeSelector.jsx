@@ -30,7 +30,7 @@ const ThemeTitle = styled.p`
 `;
 const ThemeSelector = ({ isDark }) => {
   const { dispatch, themes } = useQuizz();
-
+  console.log(themes);
   function handleSetTheme(theme) {
     dispatch({ type: "setTheme", payload: theme });
   }

@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import { moonDark } from "/images/icon-moon-dark.jsx";
-import { moonLight } from "/images/icon-moon-light.jsx";
-import { sunDark } from "/images/icon-sun-dark.jsx";
-import { sunLight } from "/images/icon-sun-light.jsx";
 import { motion } from "framer-motion";
 
 const spring = {
@@ -54,11 +50,19 @@ const ToggleButton = ({ isOn, setIsDark }) => {
   };
   return (
     <ToggleContainer>
-      {isOn ? sunLight : sunDark}
+      <img
+        src={isOn ? "/images/icon-sun-light.svg" : "/images/icon-sun-dark.svg"}
+        alt="Sun Icon"
+      />
       <Switch data-ison={isOn} onClick={toggleTheme}>
         <Handle layout transition={spring} />
       </Switch>
-      {isOn ? moonLight : moonDark}
+      <img
+        src={
+          isOn ? "/images/icon-moon-light.svg" : "/images/icon-moon-dark.svg"
+        }
+        alt="Moon Icon"
+      />
     </ToggleContainer>
   );
 };

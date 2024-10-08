@@ -24,7 +24,6 @@ const IconContainer = styled.div`
 `;
 const Icon = ({ name, theme }) => {
   const iconName = `icon-${theme.toLowerCase()}`;
-
   let bgColor = "";
   switch (theme) {
     case "Accessibility":
