@@ -27,6 +27,9 @@ const Index = styled.div`
   padding: 1.6rem 1.8rem 1.2rem;
   margin: 1.8rem 3rem 2rem 2rem;
   transition: background-color 0.3s ease, color 0.3s ease;
+  @media screen and (max-width: 450px), (max-device-width: 450px) {
+    margin: 1.2rem 1.6rem 1.2rem;
+  }
 
   /* Effet de hover uniquement si l'élément n'est pas sélectionné */
   ${(props) =>

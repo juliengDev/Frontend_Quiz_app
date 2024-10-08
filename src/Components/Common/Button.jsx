@@ -56,7 +56,7 @@ function Button({
       )}
 
       {isFinished && (
-        <ButtonSubmit onClick={handlePlayAgain}>PlayAgain</ButtonSubmit>
+        <ButtonSubmit onClick={handlePlayAgain}>Play Again</ButtonSubmit>
       )}
     </>
   );
