@@ -1,5 +1,3 @@
-Voici la conversion en markdown :
-
 # Frontend quiz app
 
 ![Design preview for the Frontend quiz app coding challenge](./preview.jpg)
